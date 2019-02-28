@@ -37,4 +37,5 @@ So therefore assignments have a has many relationship with both tasks and users.
 I made this decision because I think that it will at some point be easier to
 handle changes to any of these structures. If tasks have to change in anyway it
 should not affect any existing assignments. Also this way everyone can see any
-changes right away to the tasks through their assignments. s 
+changes right away to the tasks through their assignments. Also this way a task
+can exist without a user but an assignment to a task cannot. 
