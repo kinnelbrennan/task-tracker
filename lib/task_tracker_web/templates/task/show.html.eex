@@ -1,0 +1,49 @@
+<h1>Show Task</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @task.name %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @task.desc %>
+  </li>
+
+  <li>
+    <strong>Complete:</strong>
+    <%= @task.complete %>
+  </li>
+
+</ul>
+
+<%= if @current_user do %>
+  <div>
+    <%= form_for @assingment_set, Routes.assignment_path(@conn, :create),
+        [class: "form-inline"], fn f -> %>
+
+        <%= hidden_input f, :task_id %>
+        <%= hidden_input f, :user_id %>
+
+        <div class="form-group">
+          <%= number_input f, :time, class: "form-control" %>
+          <%= error_tag f, :count %>
+        </div>
+
+        <!-- <div class="form-control"> -->
+        <!--  <%= text_input f, :user_id, class: "form-control" %> -->
+        <!--  <%= error_tag f, :user_id %> -->
+        <!-- </div> -->
+
+        <div>
+          <%= submit "Assign Task", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task),
+          class: "btn btn-info" %></span>
+<span><%= link "Back", to: Routes.task_path(@conn, :index),
+          class: "btn btn-secondary" %></span>
