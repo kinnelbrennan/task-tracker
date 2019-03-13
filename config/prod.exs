@@ -13,8 +13,8 @@ config :task_tracker, TaskTrackerWeb.Endpoint,
   server: true,
   root: ".",
   version: Application.spec(:phoenix_distillery, :vsn),
-  http: [:inet6, port: {:system, "PORT"}],
-  url: [host: "task1.ozymandiasking.com", port: 80],
+  http: [port: {:system, "PORT"}],
+  url: [host: "tasks1.ozymandiasking.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -71,4 +71,22 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
-import_config "prod.secret.exs"
+get_secret = fn name ->
+	base = Path.expand("~/.config/task_tracker")
+	File.mkdir_p!(base)
+	path = Path.join(base, name)
+	unless File.exists?(path) do
+		secret = Base.encode16(:crypto.strong_rand_bytes(32))
+		File.write!(path,secret)
+	end
+	String.trim(File.read!(path))
+end
+
+config :task_tracker, TaskTrackerWeb.Endpoint,
+	secret_key_base: get_secret.("key_base")
+
+config :task_tracker, TaskTracker.Repo,
+	username: "postgres",
+	password: "postgres",
+	database: "task_tracker_dev",
+	pool_size: 15
