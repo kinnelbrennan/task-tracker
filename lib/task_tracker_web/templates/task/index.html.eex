@@ -18,7 +18,7 @@
       <td><%= task.complete %></td>
 
       <td>
-        <%= link "Show", to: Routes.task_path(@conn, :show, task),
+        <%= link "Assign", to: Routes.task_path(@conn, :show, task),
             class: "btn btn-secondary" %>
         <%= link "Edit", to: Routes.task_path(@conn, :edit, task),
             class: "btn btn-info" %>

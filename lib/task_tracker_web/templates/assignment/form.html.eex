@@ -9,6 +9,10 @@
   <%= number_input f, :time %>
   <%= error_tag f, :time %>
 
+  <%= label f, :user_id %>
+  <%= select f, :user_id, @users %>
+  <%= error_tag f, :user_id %>
+
   <div>
     <%= submit "Save" %>
   </div>

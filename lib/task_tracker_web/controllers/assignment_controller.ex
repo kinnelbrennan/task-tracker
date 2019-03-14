@@ -3,6 +3,7 @@ defmodule TaskTrackerWeb.AssignmentController do
 
   alias TaskTracker.Assignments
   alias TaskTracker.Assignments.Assignment
+  alias TaskTracker.Users
 
   def index(conn, _params) do
     t = Assignments.list_t()
@@ -11,7 +12,10 @@ defmodule TaskTrackerWeb.AssignmentController do
 
   def new(conn, _params) do
     changeset = Assignments.change_assignment(%Assignment{})
-    render(conn, "new.html", changeset: changeset)
+    users =
+      Users.list_users
+      |> Enum.map(&{"#{&1.email}", &1.id})
+    render(conn, "new.html", changeset: changeset, users: users)
   end
 
   def create(conn, %{"assignment" => assignment_params}) do

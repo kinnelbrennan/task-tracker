@@ -8,7 +8,7 @@
   </li>
 
   <li>
-    <strong>Admin:</strong>
+    <strong>Manager:</strong>
     <%= @user.admin %>
   </li>
 
