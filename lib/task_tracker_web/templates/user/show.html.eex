@@ -1,4 +1,4 @@
-<h1>Show User</h1>
+<h1>Profile</h1>
 
 <ul>
 
@@ -8,11 +8,30 @@
   </li>
 
   <li>
-    <strong>Manager:</strong>
+    <strong>Is a Manager?</strong>
     <%= @user.admin %>
   </li>
 
+  <li>
+    <strong>Reports To:</strong>
+    <%= @user.manager %>
+  </li>
+
 </ul>
+<table>
+  <thead>
+    <tr>
+      <th>Subordinates</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user),
           class: "btn btn-secondary" %></span>

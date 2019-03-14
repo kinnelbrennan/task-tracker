@@ -29,7 +29,10 @@ defmodule TaskTrackerWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
-    render(conn, "show.html", user: user)
+    users =
+      Users.list_users
+      |> Enum.filter(fn x -> x.manager == user.email end)
+    render(conn, "show.html", user: user, users: users)
   end
 
   def edit(conn, %{"id" => id}) do

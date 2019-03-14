@@ -16,7 +16,7 @@
       <td><%= user.admin %></td>
 
       <td>
-        <%= link "Show", to: Routes.user_path(@conn, :show, user),
+        <%= link "Profile", to: Routes.user_path(@conn, :show, user),
             class: "btn btn-secondary" %>
         <%= link "Edit", to: Routes.user_path(@conn, :edit, user),
             class: "btn btn-info" %>
