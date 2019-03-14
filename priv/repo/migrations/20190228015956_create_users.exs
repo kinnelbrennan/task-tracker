@@ -5,9 +5,11 @@ defmodule TaskTracker.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :email, :string
       add :admin, :boolean, default: false, null: false
+      add :manager, :string, null: true
 
       timestamps()
     end
 
+    create unique_index(:users, [:email])
   end
 end

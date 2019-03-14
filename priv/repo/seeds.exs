@@ -13,5 +13,14 @@
 alias TaskTracker.Repo
 alias TaskTracker.Users.User
 
-Repo.insert!(%User{email: "harry@hogwarts.edu", admin: false})
+Repo.insert!(%User{email: "harry@hogwarts.edu", admin: false,
+  manager: "minerva@hogwarts.edu"})
 Repo.insert!(%User{email: "albus@hogwarts.edu", admin: true})
+Repo.insert!(%User{email: "hermione@hogwarts.edu", admin: false,
+  manager: "minerva@hogwarts.edu"})
+Repo.insert!(%User{email: "minerva@hogwarts.edu", admin: true,
+  manager: "albus@hogwarts.edu"})
+Repo.insert!(%User{email: "ron@hogwarts.edu", admin: false,
+  manager: "minerva@hogwarts.edu"})
+Repo.insert!(%User{email: "severus@hogwarts.edu", admin: true,
+  manager: "albus@hogwarts.edu"})

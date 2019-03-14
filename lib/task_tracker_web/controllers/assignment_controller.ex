@@ -14,6 +14,7 @@ defmodule TaskTrackerWeb.AssignmentController do
     changeset = Assignments.change_assignment(%Assignment{})
     users =
       Users.list_users
+      ##|> Enum.filter() filter by manager
       |> Enum.map(&{"#{&1.email}", &1.id})
     render(conn, "new.html", changeset: changeset, users: users)
   end
@@ -32,13 +33,21 @@ defmodule TaskTrackerWeb.AssignmentController do
 
   def show(conn, %{"id" => id}) do
     assignment = Assignments.get_assignment!(id)
-    render(conn, "show.html", assignment: assignment)
+    users =
+      Users.list_users
+      ##|> Enum.filter() filter by manager
+      |> Enum.map(&{"#{&1.email}", &1.id})
+    render(conn, "show.html", assignment: assignment, users: users)
   end
 
   def edit(conn, %{"id" => id}) do
     assignment = Assignments.get_assignment!(id)
     changeset = Assignments.change_assignment(assignment)
-    render(conn, "edit.html", assignment: assignment, changeset: changeset)
+    users =
+      Users.list_users
+      ##|> Enum.filter() filter by manager
+      |> Enum.map(&{"#{&1.email}", &1.id})
+    render(conn, "edit.html", assignment: assignment, changeset: changeset, users: users)
   end
 
   def update(conn, %{"id" => id, "assignment" => assignment_params}) do

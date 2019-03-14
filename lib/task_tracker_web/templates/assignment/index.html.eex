@@ -13,7 +13,7 @@
   <tbody>
 <%= for assignment <- @t do %>
     <tr>
-      <td><%= assignment.time * 15 %></td>
+      <td><%= assignment.time%></td>
       <td><%= assignment.task.name %></td>
       <td><%= assignment.task.complete %></td>
 
