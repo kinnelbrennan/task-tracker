@@ -86,7 +86,7 @@ config :task_tracker, TaskTrackerWeb.Endpoint,
 	secret_key_base: get_secret.("key_base")
 
 config :task_tracker, TaskTracker.Repo,
-	username: "postgres",
-	password: "postgres",
-	database: "task_tracker_dev",
+	username: "task_tracker",
+	password: get_secret.("db_pass"),
+	database: "task_tracker_prod",
 	pool_size: 15

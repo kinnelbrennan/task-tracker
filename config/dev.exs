@@ -65,11 +65,12 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+3
 
 # Configure your database
 config :task_tracker, TaskTracker.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "task_tracker",
+  password: "TheR@ininSpa1n",
   database: "task_tracker_dev",
   hostname: "localhost",
   pool_size: 10
