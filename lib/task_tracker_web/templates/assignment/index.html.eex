@@ -14,8 +14,10 @@
 <%= for assignment <- @t do %>
     <tr>
       <td><%= assignment.time%></td>
-      <td><%= assignment.task.name %></td>
-      <td><%= assignment.task.complete %></td>
+      <td><%= link(assignment.task.name,
+          to: Routes.task_path(@conn, :show, assignment.task_id)) %></td>
+      <td><%= link(assignment.task.complete,
+          to: Routes.task_path(@conn, :show, assignment.task_id))%></td>
 
       <td>
         <%= link "Show", to: Routes.assignment_path(@conn, :show, assignment),

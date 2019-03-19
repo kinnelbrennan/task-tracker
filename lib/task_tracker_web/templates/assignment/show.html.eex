@@ -2,10 +2,38 @@
 
 <ul>
   <li>
-    <strong>Time:</strong>
-    <%= @assignment.time %>
+    <strong>Time In:</strong>
+    <span id="time-stamp">
+      <%= time_in(@assignment) %>
+    </span>
+
+    <%= if @current_user do %>
+      <button id="time-button-in"
+        data-assignment-id="<%= @assignment.id %>"
+        class = "btn btn-primary">Start</button>
+    <% end %>
+
   </li>
 
+  <li>
+    <strong>Time Out:</strong>
+    <span id="time-stamp">
+      <%= time_out(@assignment) %>
+    </span>
+
+    <%= if @current_user do %>
+      <button id="time-button-in"
+        data-assignment-id="<%= @assignment.id %>"
+        class = "btn btn-primary">Stop</button>
+    <% end %>
+  </li>
+
+  <li>
+    <strong>Total Time:</strong>
+    <span id="time-total">
+      <%= total_time(@assignment) %>
+    </span>
+  </li>
 </ul>
 
 <span><%= link "Edit", to: Routes.assignment_path(@conn, :edit, @assignment) %></span>

@@ -5,7 +5,7 @@ defmodule TaskTracker.Repo.Migrations.CreateTimes do
     create table(:times) do
       add :time_in, :naive_datetime
       add :time_out, :naive_datetime
-      add :assignment_id, references(:assignments, on_delete: :nothing)
+      add :assignment_id, references(:t, on_delete: :delete_all)
 
       timestamps()
     end

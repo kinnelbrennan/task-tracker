@@ -35,7 +35,11 @@ defmodule TaskTracker.Assignments do
       ** (Ecto.NoResultsError)
 
   """
-  def get_assignment!(id), do: Repo.get!(Assignment, id)
+  def get_assignment!(id) do
+    Repo.one! from a in Assignment,
+      where: a.id == ^id,
+      preload: [:times]
+    end
 
   @doc """
   Creates a assignment.
