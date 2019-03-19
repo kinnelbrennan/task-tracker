@@ -7,6 +7,7 @@ defmodule TaskTracker.Assignments.Assignment do
     field :time, :integer
     belongs_to :user, TaskTracker.Users.User
     belongs_to :task, TaskTracker.Tasks.Task
+    has_many :times, TaskTracker.Times.Time
 
     timestamps()
   end
