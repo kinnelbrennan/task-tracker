@@ -82,7 +82,7 @@ get_secret = fn name ->
 	String.trim(File.read!(path))
 end
 
-config :task_tracker, TaskTrackerWeb.Endpoint,
+config :task_tracke3r, TaskTrackerWeb.Endpoint,
 	secret_key_base: get_secret.("key_base")
 
 config :task_tracker, TaskTracker.Repo,

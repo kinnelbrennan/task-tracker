@@ -5,15 +5,19 @@
     </div>
   <% end %>
 
-  <%= label f, :time %>
-  <%= number_input f, :time %>
-  <%= error_tag f, :time %>
+  <div class="form-group">
+    <%= label f, :time %>
+    <%= number_input f, :time, class: "form-control" %>
+    <%= error_tag f, :time %>
+  </div>
 
+<%= if @current_user.admin do %>
   <%= label f, :user_id %>
   <%= select f, :user_id, @users %>
   <%= error_tag f, :user_id %>
+<% end %>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>
